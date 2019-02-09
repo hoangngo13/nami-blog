@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :find_article, only: [:show, :edit, :update]
+  before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all
   end
-  
+
   def new
     @article = Article.new
   end
@@ -37,6 +37,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    @article.destroy
+    flash[:notice] = "Article deleted success!"
+    redirect_to articles_path
+  end
   private
     def article_params
       params.require(:article).permit(:title, :description)
