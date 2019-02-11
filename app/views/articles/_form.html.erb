@@ -1,12 +1,4 @@
-<% if @article.errors.any? %>
-  <% @article.errors.full_messages.each do |msg| %>
-    <ul>
-      <li>
-        <%= msg %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
+<%= render 'shared/errors'%>
 
 <div class="row">
   <div class="col-md-12">
