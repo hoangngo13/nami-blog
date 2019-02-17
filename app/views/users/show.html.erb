@@ -3,6 +3,8 @@
   <div class="col-md-4 col-md-offset-4 center">
     <%= gravatar_for @user%>
   </div>
-</div>
+</div><br/>
 <h4 align="center"><%= @user.username %>'s Articles</h4>
-<%= render 'articles/articles', obj: @user.articles %>
+<div align="center"><%= will_paginate @user_articles %></div>
+<%= render 'articles/articles', obj: @user_articles %>
+<div align="center"><%= will_paginate @user_articles %></div>

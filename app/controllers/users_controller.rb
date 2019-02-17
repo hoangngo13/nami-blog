@@ -2,14 +2,16 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
   
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 5)
   end
   def new
     @user = User.new
   end
 
   def show
+    @user_articles = @user.articles.paginate(:page => params[:page], :per_page => 5)
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
