@@ -16,10 +16,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-        flash[:sucess] = "User created success!"
-        redirect_to articles_path
+      session[:user_id] = @user.id
+      flash[:success] = "User created success!"
+      redirect_to user_path(@user)
     else
-        render 'new'
+      render 'new'
     end
   end
 
